@@ -226,7 +226,7 @@ const IPODetailPage: React.FC = () => {
                   {/* Company Information */}
                   <Col xs={24} sm={16} md={18} lg={19}>
                     <div className="text-center sm:text-left">
-                      <Title level={1} className="mb-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight drop-shadow-lg">
+                      <Title level={1} className="mb-3 text-2xl sm:text-3xl lg:text-4xl font-bold !text-white leading-tight drop-shadow-lg">
                         {ipo.name}
                       </Title>
 
@@ -248,12 +248,12 @@ const IPODetailPage: React.FC = () => {
                             </Text>
                           </div>
                         </div>
-                        <div className="bg-white/25 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl border-2 border-white/40 shadow-lg hover:bg-white/30 transition-all duration-300">
+                        {/* <div className="bg-white/25 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl border-2 border-white/40 shadow-lg hover:bg-white/30 transition-all duration-300">
                           <div className="flex items-center space-x-1.5 sm:space-x-2.5">
                             <GlobalOutlined className="text-white text-sm sm:text-base" />
                             <Text className="font-semibold text-white text-xs sm:text-sm tracking-wide">{ipo.exchange}</Text>
                           </div>
-                        </div>
+                        </div> */}
                         <div className="bg-white/25 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl border-2 border-white/40 shadow-lg hover:bg-white/30 transition-all duration-300">
                           <div className="flex items-center space-x-1.5 sm:space-x-2.5">
                             <BuildOutlined className="text-white text-sm sm:text-base" />
