@@ -1,0 +1,2865 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Ant Design customizations */
+.ant-layout {
+  background: #ffffff;
+}
+
+/* Enhanced Mobile table styles */
+@media (max-width: 768px) {
+  .mobile-table .ant-table-thead {
+    display: none !important;
+  }
+
+  .mobile-table .ant-table-tbody > tr > td {
+    padding: 16px !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .mobile-table .ant-table-tbody > tr {
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .mobile-table .ant-table-tbody > tr:hover {
+    background: transparent !important;
+  }
+
+  .mobile-table .ant-table {
+    background: transparent !important;
+  }
+
+  .mobile-table .ant-table-container {
+    border: none !important;
+  }
+
+  .mobile-table .ant-table-content {
+    background: transparent !important;
+  }
+
+  .mobile-table .ant-tag {
+    margin: 0;
+    font-size: 11px;
+    padding: 2px 8px;
+    line-height: 18px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .mobile-table .ant-btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-table .ant-rate {
+    font-size: 14px;
+  }
+
+  .mobile-table .ant-rate-star {
+    margin-right: 3px;
+  }
+
+  /* Card hover animations */
+  .mobile-table .ant-table-tbody > tr > td > div {
+    animation: fadeInUp 0.3s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced button styles */
+  .mobile-table .ant-btn-primary {
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  }
+
+  .mobile-table .ant-btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .mobile-table .ant-btn-default:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.ant-menu {
+  border-right: none;
+}
+
+/* Custom utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 25%, #8b5cf6 75%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+  position: relative;
+}
+
+.text-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 25%, #8b5cf6 75%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+  filter: blur(8px);
+  opacity: 0.3;
+  z-index: -1;
+  border-radius: 8px;
+}
+
+/* Logo specific styling */
+.logo-text {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  position: relative;
+  transition: all 0.3s ease;
+  color: #0ea5e9 !important;
+  text-shadow: 0 2px 4px rgba(14, 165, 233, 0.2);
+}
+
+.logo-text span {
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 25%, #8b5cf6 75%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  color: transparent;
+}
+
+/* Enhanced gradient text with better browser support */
+@supports (-webkit-background-clip: text) {
+  .logo-text span {
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .logo-text span {
+    background: none !important;
+    color: #0ea5e9 !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}
+
+.logo-text:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px rgba(14, 165, 233, 0.4));
+}
+
+/* Additional logo styling for better visibility */
+.logo-text {
+  text-decoration: none !important;
+}
+
+.logo-text:hover {
+  text-decoration: none !important;
+}
+
+/* Simple, visible gradient logo */
+.logo-gradient-text {
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Ensure visibility with fallback */
+.logo-gradient-text::before {
+  content: "IPO Edge";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #0ea5e9;
+  z-index: -1;
+  font-weight: 800;
+}
+
+.logo-gradient-text:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.3));
+}
+
+/* Remove underlines from links */
+.no-underline {
+  text-decoration: none !important;
+}
+
+.no-underline:hover {
+  text-decoration: none !important;
+}
+
+/* Enhanced gradient utilities */
+.bg-gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.feature-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Loading animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Status indicators */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.status-dot.current {
+  background-color: #52c41a;
+  box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2);
+}
+
+.status-dot.upcoming {
+  background-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.status-dot.listed {
+  background-color: #722ed1;
+  box-shadow: 0 0 0 2px rgba(114, 46, 209, 0.2);
+}
+
+.status-dot.closed {
+  background-color: #8c8c8c;
+  box-shadow: 0 0 0 2px rgba(140, 140, 140, 0.2);
+}
+
+/* Pagination styles */
+.pagination-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pagination-center .ant-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pagination-center .ant-pagination-item,
+.pagination-center .ant-pagination-prev,
+.pagination-center .ant-pagination-next,
+.pagination-center .ant-pagination-jump-prev,
+.pagination-center .ant-pagination-jump-next {
+  margin: 0 2px;
+}
+
+/* Mobile pagination buttons */
+.mobile-pagination-btn {
+  min-width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #d9d9d9;
+}
+
+.mobile-pagination-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.mobile-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+  color: #bfbfbf;
+}
+
+/* Responsive pagination adjustments */
+@media (max-width: 768px) {
+  .pagination-center .ant-pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagination-center .ant-pagination-options {
+    order: -1;
+    margin-bottom: 8px;
+  }
+
+  .pagination-center .ant-pagination-total-text {
+    order: 1;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 12px;
+    color: #8c8c8c;
+  }
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .text-responsive {
+    font-size: 0.875rem;
+  }
+
+  .card-mobile {
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile-specific hero adjustments */
+  .hero-title {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  /* Mobile button adjustments */
+  .mobile-button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Mobile spacing */
+  .mobile-spacing {
+    padding: 1rem;
+  }
+
+  .mobile-spacing-lg {
+    padding: 2rem 1rem;
+  }
+
+  /* Mobile filter improvements - Medium size for better UX */
+  .mobile-input .ant-input {
+    min-height: 36px !important;
+    padding: 6px 11px !important;
+    font-size: 14px !important;
+  }
+
+  .mobile-select .ant-select-selector {
+    min-height: 36px !important;
+    padding: 4px 11px !important;
+  }
+
+  .mobile-select .ant-select-selection-item {
+    font-size: 12px !important;
+    padding: 2px 6px !important;
+    margin: 2px 4px 2px 0 !important;
+  }
+
+  .mobile-button.ant-btn {
+    min-height: 36px !important;
+    padding: 4px 12px !important;
+    font-size: 13px !important;
+  }
+
+  /* Default mobile sizing for other elements */
+  .ant-select-selector {
+    min-height: 36px !important;
+    padding: 4px 11px !important;
+  }
+
+  .ant-input {
+    min-height: 36px !important;
+    padding: 6px 11px !important;
+  }
+
+  .ant-btn {
+    min-height: 36px !important;
+    padding: 4px 12px !important;
+  }
+
+  /* Improve select dropdown on mobile */
+  .ant-select-selection-overflow {
+    flex-wrap: wrap !important;
+  }
+
+  .ant-select-selection-item {
+    margin-bottom: 2px !important;
+    font-size: 12px !important;
+  }
+
+  /* Better spacing for filter cards */
+  .ant-card-body {
+    padding: 12px !important;
+  }
+
+  /* Responsive button groups */
+  .ant-space-horizontal {
+    flex-wrap: wrap !important;
+  }
+
+  .ant-space-item {
+    margin-bottom: 6px !important;
+  }
+
+  /* Mobile-specific improvements */
+  .mobile-button {
+    font-weight: 500 !important;
+  }
+
+  .mobile-select .ant-select-selection-placeholder {
+    font-size: 13px !important;
+    color: #999 !important;
+  }
+
+  .mobile-input .ant-input::placeholder {
+    font-size: 13px !important;
+    color: #999 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .show-mobile {
+    display: block;
+  }
+
+  /* Tablet adjustments */
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Filter improvements for tablet */
+  .ant-row {
+    margin-left: -8px !important;
+    margin-right: -8px !important;
+  }
+
+  .ant-col {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  /* Better button spacing on tablet */
+  .ant-space {
+    gap: 8px !important;
+  }
+}
+
+/* Medium mobile screens (481px - 640px) */
+@media (min-width: 481px) and (max-width: 640px) {
+  .mobile-input .ant-input {
+    min-height: 38px !important;
+    padding: 7px 11px !important;
+  }
+
+  .mobile-select .ant-select-selector {
+    min-height: 38px !important;
+    padding: 5px 11px !important;
+  }
+
+  .mobile-button.ant-btn {
+    min-height: 38px !important;
+    padding: 5px 14px !important;
+  }
+
+  .ant-select-selector {
+    min-height: 38px !important;
+  }
+
+  .ant-input {
+    min-height: 38px !important;
+  }
+
+  .ant-btn {
+    min-height: 38px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none;
+  }
+
+  .show-desktop {
+    display: block;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1024px) {
+  .desktop-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .desktop-spacing {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl-spacing {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Focus states for accessibility */
+.focus-visible:focus {
+  outline: 2px solid #1890ff;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card-hover {
+    border: 2px solid #000;
+  }
+
+  .text-gradient {
+    background: none;
+    color: #000;
+    -webkit-text-fill-color: initial;
+  }
+}
+
+/* Enhanced animations for mobile */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-bounceIn {
+  animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Login/Register Page Specific Animations */
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-floatUp {
+  animation: floatUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 2s steps(40, end);
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* Form Input Focus Animations */
+.form-input-focus {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-input-focus:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Hover Effects */
+.btn-gradient-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gradient-hover:hover::before {
+  left: 100%;
+}
+
+/* Card Hover Effects */
+.card-3d-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-3d-hover:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+}
+
+/* Loading Spinner */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Success Checkmark Animation */
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-checkmark {
+  stroke-dasharray: 100;
+  animation: checkmark 0.8s ease-in-out;
+}
+
+/* IPO/Stock Market Themed Animations */
+@keyframes stockTicker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-stockTicker {
+  animation: stockTicker 15s linear infinite;
+}
+
+@keyframes priceUp {
+  0%, 100% {
+    transform: translateY(0);
+    color: #22c55e;
+  }
+  50% {
+    transform: translateY(-5px);
+    color: #16a34a;
+  }
+}
+
+.animate-priceUp {
+  animation: priceUp 2s ease-in-out infinite;
+}
+
+@keyframes chartGrow {
+  0% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+.animate-chartGrow {
+  animation: chartGrow 1.5s ease-out;
+}
+
+@keyframes coinFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-coinFlip {
+  animation: coinFlip 2s ease-in-out infinite;
+}
+
+@keyframes marketPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.animate-marketPulse {
+  animation: marketPulse 3s ease-in-out infinite;
+}
+
+/* Enhanced Social Button Animations */
+@keyframes socialHover {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.social-button-hover:hover {
+  animation: socialHover 0.3s ease-in-out;
+}
+
+/* Gradient Text Animation for IPO Theme */
+@keyframes ipoGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.ipo-gradient-text {
+  background: linear-gradient(45deg, #22c55e, #3b82f6, #8b5cf6, #22c55e);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ipoGradient 4s ease-in-out infinite;
+}
+
+/* Stock Chart Line Animation */
+@keyframes drawLine {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-drawLine {
+  stroke-dasharray: 1000;
+  animation: drawLine 3s ease-in-out infinite;
+}
+
+/* Investment Badge Animation */
+@keyframes badgeBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-badgeBounce {
+  animation: badgeBounce 2s ease-in-out infinite;
+}
+
+/* Modern Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced Shimmer Effect */
+@keyframes shimmerLine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmerLine 3s ease-in-out infinite;
+}
+
+/* Enhanced Background Animations */
+@keyframes slowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+}
+
+@keyframes morphBackground {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    border-radius: 60% 40% 60% 30% / 70% 30% 60% 40%;
+  }
+}
+
+.animate-slowPulse {
+  animation: slowPulse 8s ease-in-out infinite;
+}
+
+.animate-gentleFloat {
+  animation: gentleFloat 8s ease-in-out infinite;
+}
+
+.animate-morphBackground {
+  animation: morphBackground 12s ease-in-out infinite;
+}
+
+/* Enhanced Dynamic Animations */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px) scale(0.95);
+  }
+  75% {
+    transform: translateY(-30px) translateX(-10px) scale(1.02);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes shimmerSlow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-gradientShift {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.animate-floatSlow {
+  animation: floatSlow 12s ease-in-out infinite;
+}
+
+.animate-floatGentle {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-shimmerSlow {
+  animation: shimmerSlow 4s ease-in-out infinite;
+}
+
+/* IPO Specific Animations */
+@keyframes typing {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dataFlow {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes chartGrow {
+  0% {
+    transform: scaleY(0.8);
+  }
+  50% {
+    transform: scaleY(1.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes progressFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-typing {
+  animation: typing 2s ease-in-out infinite;
+}
+
+.animate-dataFlow {
+  animation: dataFlow 3s ease-in-out infinite;
+}
+
+.animate-chartGrow {
+  animation: chartGrow 2s ease-in-out infinite;
+}
+
+.animate-progressFill {
+  animation: progressFill 3s ease-in-out infinite;
+}
+
+/* Enhanced hover effects for cards */
+.ipo-card {
+  transition: all 0.3s ease;
+}
+
+.ipo-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* IPO Card Container Styles */
+.ipo-card-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.ipo-card-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: #d9d9d9;
+}
+
+.ipo-card-container .ant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.ipo-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ipo-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.ipo-card-details > div {
+  min-height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+/* IPO Card Actions Styling */
+.ipo-card-container .ant-card-actions {
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+  padding: 8px 16px;
+}
+
+.ipo-card-container .ant-card-actions > li {
+  margin: 4px 0;
+}
+
+/* Apply Button Styles */
+.ipo-apply-button {
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  height: 32px;
+  padding: 0 16px;
+}
+
+.ipo-apply-active {
+  background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(82, 196, 26, 0.3);
+}
+
+.ipo-apply-active:hover {
+  background: linear-gradient(135deg, #389e0d 0%, #237804 100%);
+  box-shadow: 0 6px 16px rgba(82, 196, 26, 0.4);
+  transform: translateY(-1px);
+}
+
+.ipo-apply-disabled {
+  background: #f5f5f5;
+  color: #8c8c8c;
+  border: 1px solid #d9d9d9;
+}
+
+.ipo-apply-disabled:hover {
+  background: #f5f5f5;
+  color: #8c8c8c;
+  border: 1px solid #d9d9d9;
+  transform: none;
+}
+
+/* Upcoming IPO Button */
+.ipo-apply-upcoming {
+  background: #fff2e8;
+  color: #fa8c16;
+  border: 1px solid #ffbb96;
+  cursor: not-allowed;
+}
+
+.ipo-apply-upcoming:hover {
+  background: #fff2e8;
+  color: #fa8c16;
+  border: 1px solid #ffbb96;
+  transform: none;
+}
+
+.ipo-apply-upcoming:disabled {
+  background: #fff2e8;
+  color: #fa8c16;
+  border: 1px solid #ffbb96;
+  opacity: 0.8;
+}
+
+/* Listed IPO Button */
+.ipo-apply-listed {
+  background: linear-gradient(135deg, #722ed1 0%, #531dab 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(114, 46, 209, 0.3);
+}
+
+.ipo-apply-listed:hover {
+  background: linear-gradient(135deg, #531dab 0%, #391085 100%);
+  box-shadow: 0 6px 16px rgba(114, 46, 209, 0.4);
+  transform: translateY(-1px);
+  color: white;
+}
+
+/* Closed IPO Button */
+.ipo-apply-closed {
+  background: linear-gradient(135deg, #8c8c8c 0%, #595959 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(140, 140, 140, 0.3);
+}
+
+.ipo-apply-closed:hover {
+  background: linear-gradient(135deg, #595959 0%, #434343 100%);
+  box-shadow: 0 6px 16px rgba(140, 140, 140, 0.4);
+  transform: translateY(-1px);
+  color: white;
+}
+
+/* View Button Styles */
+.ipo-view-button {
+  font-weight: 500;
+  color: #1890ff;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.ipo-view-button:hover {
+  color: #40a9ff;
+  background: rgba(24, 144, 255, 0.06);
+}
+
+/* Mobile-optimized animations */
+@media (max-width: 768px) {
+  .animate-fadeIn,
+  .animate-slideInRight,
+  .animate-slideInLeft,
+  .animate-bounceIn,
+  .animate-slideUp {
+    animation-duration: 0.3s;
+  }
+
+  /* Mobile IPO Card Adjustments */
+  .ipo-card-container {
+    margin-bottom: 16px;
+  }
+
+  .ipo-card-container .ant-card-body {
+    padding: 12px;
+  }
+
+  .ipo-card-details {
+    gap: 10px;
+  }
+
+  .ipo-card-details > div {
+    min-height: 20px;
+  }
+
+  .ipo-apply-button {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 12px;
+  }
+
+  .ipo-card-container .ant-card-actions {
+    padding: 6px 12px;
+  }
+
+  .ipo-card-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .card-hover {
+    transition: none;
+  }
+
+  .animate-pulse,
+  .animate-fadeIn,
+  .animate-slideInRight,
+  .animate-slideInLeft,
+  .animate-bounceIn,
+  .animate-slideUp {
+    animation: none;
+  }
+}
+
+/* Mobile touch improvements */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Safe area support for mobile devices */
+@supports (padding: max(0px)) {
+  .safe-area-inset-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .safe-area-inset-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Improved focus states for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .card-hover:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .ipo-card-container:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  button:hover {
+    transform: none;
+  }
+
+  .ipo-apply-active:hover,
+  .ipo-apply-listed:hover,
+  .ipo-apply-closed:hover {
+    transform: none;
+  }
+
+  .ipo-apply-upcoming:hover {
+    transform: none;
+  }
+}
+
+/* Ensure consistent card heights in grid layouts */
+.ant-row .ant-col {
+  display: flex;
+}
+
+.ant-row .ant-col > div {
+  width: 100%;
+}
+
+/* Grid layout improvements */
+@media (min-width: 576px) {
+  .ipo-card-container {
+    min-height: 420px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ipo-card-container {
+    min-height: 440px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ipo-card-container {
+    min-height: 460px;
+  }
+}
+
+/* Status indicator improvements */
+.ipo-card-details .ant-typography {
+  margin-bottom: 0;
+}
+
+/* Enhanced button focus states */
+.ipo-apply-button:focus,
+.ipo-view-button:focus {
+  outline: 2px solid #1890ff;
+  outline-offset: 2px;
+}
+
+.ipo-apply-active:focus {
+  outline: 2px solid #52c41a;
+  outline-offset: 2px;
+}
+
+.ipo-apply-upcoming:focus {
+  outline: 2px solid #fa8c16;
+  outline-offset: 2px;
+}
+
+.ipo-apply-listed:focus {
+  outline: 2px solid #722ed1;
+  outline-offset: 2px;
+}
+
+.ipo-apply-closed:focus {
+  outline: 2px solid #8c8c8c;
+  outline-offset: 2px;
+}
+
+/* Loading and skeleton states */
+.ipo-card-container.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Card content spacing improvements */
+.ipo-card-details .ant-typography-caption {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+/* Ensure proper text alignment */
+.ipo-card-details .text-right {
+  text-align: right;
+  word-break: break-word;
+  max-width: 60%;
+}
+
+/* Status indicator spacing */
+.ipo-card-details .ant-tag {
+  margin: 0;
+  border-radius: 6px;
+  font-size: 11px;
+  padding: 2px 8px;
+  font-weight: 500;
+}
+
+/* Improve card action button spacing */
+.ipo-card-container .ant-card-actions > li:not(:last-child) {
+  border-right: 1px solid #f0f0f0;
+}
+
+.ipo-card-container .ant-card-actions > li > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 4px 8px;
+}
+
+/* Responsive text sizing */
+@media (max-width: 480px) {
+  .ipo-card-details {
+    font-size: 13px;
+  }
+
+  .ipo-card-details .ant-typography {
+    font-size: 13px;
+  }
+
+  .ipo-apply-button {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Enhanced IPO Detail Page Styles */
+.ipo-detail-header {
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.ipo-detail-card {
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.ipo-detail-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: #e0e0e0;
+}
+
+/* Enhanced Badge Animations */
+.ant-badge-count {
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Enhanced IPO Logo Container */
+.ipo-logo-container {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ipo-logo-container:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Status Badge Pulse Animation */
+.status-badge-pulse {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.ipo-detail-card .ant-card-head {
+  border-bottom: 2px solid #f0f0f0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 16px 16px 0 0;
+  padding: 20px 24px;
+}
+
+.ipo-detail-card .ant-card-body {
+  padding: 24px;
+}
+
+/* Enhanced subscription cards */
+.subscription-status-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhanced GMP card animations */
+.gmp-card-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.gmp-card-enhanced .gmp-value {
+  position: relative;
+  z-index: 2;
+}
+
+.gmp-card-enhanced::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(82, 196, 26, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ipo-stat-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ipo-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.subscription-card {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Progress bar enhancements */
+.subscription-card .ant-progress-bg {
+  border-radius: 6px;
+}
+
+.subscription-card .ant-progress-inner {
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced mobile responsiveness for IPO detail page */
+@media (max-width: 768px) {
+  .ipo-detail-header .ant-card-body {
+    padding: 16px;
+  }
+
+  .ipo-detail-card .ant-card-body {
+    padding: 16px;
+  }
+
+  .ipo-stat-card {
+    min-height: 100px;
+    padding: 12px !important;
+    margin-bottom: 12px;
+  }
+
+  .subscription-card {
+    min-height: 120px;
+    padding: 12px !important;
+    margin-bottom: 12px;
+  }
+
+  .ipo-stat-card .text-lg,
+  .subscription-card .text-2xl {
+    font-size: 16px !important;
+  }
+
+  .subscription-card .text-3xl,
+  .subscription-card .text-4xl {
+    font-size: 20px !important;
+  }
+
+  /* Mobile header improvements */
+  .ipo-detail-header {
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  /* Mobile subscription status improvements */
+  .subscription-status-card {
+    margin-bottom: 16px;
+  }
+
+  .subscription-status-card:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  /* Mobile GMP card improvements */
+  .gmp-card-enhanced {
+    margin-bottom: 20px;
+  }
+
+  /* Mobile quick actions improvements */
+  .quick-actions-mobile .ant-btn {
+    height: 48px !important;
+    font-size: 14px !important;
+    margin-bottom: 8px;
+  }
+
+  /* Mobile important dates improvements */
+  .important-dates-mobile .date-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    padding: 12px !important;
+  }
+
+  .important-dates-mobile .date-item .date-icon {
+    margin-bottom: 6px;
+  }
+
+  /* IPO Detail Page Mobile Specific */
+  .ant-card {
+    margin-bottom: 16px !important;
+  }
+
+  .ant-card .ant-card-head {
+    padding: 12px 16px !important;
+  }
+
+  .ant-card .ant-card-body {
+    padding: 16px !important;
+  }
+
+  /* Mobile responsive grid improvements */
+  .ant-row {
+    margin-left: -8px !important;
+    margin-right: -8px !important;
+  }
+
+  .ant-col {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  /* Mobile text sizing */
+  .text-xl {
+    font-size: 1.125rem !important;
+  }
+
+  .text-2xl {
+    font-size: 1.25rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem !important;
+  }
+
+  .text-4xl {
+    font-size: 1.75rem !important;
+  }
+
+  /* Mobile button improvements */
+  .ant-btn {
+    min-height: 40px !important;
+    font-size: 14px !important;
+  }
+
+  .ant-btn-lg {
+    min-height: 44px !important;
+    font-size: 15px !important;
+  }
+
+  /* Mobile table improvements */
+  .ant-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .ant-table {
+    min-width: 600px;
+  }
+
+  /* Mobile breadcrumb improvements */
+  .ant-breadcrumb {
+    font-size: 13px !important;
+  }
+
+  .ant-breadcrumb-link {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ipo-detail-header {
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .ipo-detail-card {
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .ipo-stat-card,
+  .subscription-card {
+    min-height: 80px;
+    padding: 10px !important;
+    margin-bottom: 10px;
+  }
+
+  .ipo-stat-card .text-lg {
+    font-size: 14px !important;
+  }
+
+  .subscription-card .text-2xl,
+  .subscription-card .text-3xl,
+  .subscription-card .text-4xl {
+    font-size: 18px !important;
+  }
+
+  /* Ultra-mobile specific improvements */
+  .container-mobile {
+    padding: 8px;
+  }
+
+  .card-spacing-mobile {
+    margin-bottom: 12px;
+  }
+
+  .text-responsive-mobile {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Ultra-mobile IPO detail improvements */
+  .ant-card .ant-card-head {
+    padding: 8px 12px !important;
+  }
+
+  .ant-card .ant-card-body {
+    padding: 12px !important;
+  }
+
+  .ant-card {
+    margin-bottom: 12px !important;
+  }
+
+  /* Ultra-mobile text sizing */
+  .text-xl {
+    font-size: 1rem !important;
+  }
+
+  .text-2xl {
+    font-size: 1.125rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.25rem !important;
+  }
+
+  .text-4xl {
+    font-size: 1.5rem !important;
+  }
+
+  /* Ultra-mobile spacing */
+  .space-y-8 > * + * {
+    margin-top: 1rem !important;
+  }
+
+  .space-y-6 > * + * {
+    margin-top: 0.75rem !important;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Ultra-mobile button improvements */
+  .ant-btn {
+    min-height: 36px !important;
+    font-size: 13px !important;
+    padding: 4px 12px !important;
+  }
+
+  .ant-btn-lg {
+    min-height: 40px !important;
+    font-size: 14px !important;
+    padding: 6px 16px !important;
+  }
+
+  /* Ultra-mobile hero section */
+  .hero-section {
+    padding: 12px !important;
+  }
+
+  /* Ultra-mobile grid improvements */
+  .ant-row {
+    margin-left: -6px !important;
+    margin-right: -6px !important;
+  }
+
+  .ant-col {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+}
+
+/* Modern glassmorphism effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+  transform: translateY(-2px);
+}
+
+/* Enhanced button hover effects */
+.btn-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-enhanced:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+.enhanced-focus:focus {
+  outline: 3px solid rgba(24, 144, 255, 0.5);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Loading state improvements */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Enhanced card shadows */
+.shadow-enhanced {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-enhanced:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Modern Background Pattern */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* IPO Detail Page Modern Layout */
+.ipo-detail-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  position: relative;
+}
+
+.ipo-detail-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Modern Card Styling */
+.modern-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 32px 64px -12px rgba(0, 0, 0, 0.15),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced grid layout for key details */
+.key-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.key-detail-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.key-detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.key-detail-card:hover::before {
+  opacity: 1;
+}
+
+.key-detail-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow:
+    0 32px 64px -12px rgba(0, 0, 0, 0.15),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Modern section spacing */
+.section-spacing {
+  margin-bottom: 64px;
+}
+
+.section-spacing:last-child {
+  margin-bottom: 0;
+}
+
+/* Glass morphism effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced responsive layout */
+@media (max-width: 1024px) {
+  .ipo-detail-content {
+    padding: 0 16px;
+  }
+
+  .key-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .key-detail-card {
+    padding: 24px;
+  }
+
+  .section-spacing {
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ipo-detail-content {
+    padding: 0 12px;
+  }
+
+  .key-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .key-detail-card {
+    padding: 20px;
+  }
+
+  .section-spacing {
+    margin-bottom: 32px;
+  }
+
+  .modern-card {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .key-detail-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .section-spacing {
+    margin-bottom: 24px;
+  }
+}
+
+/* IPO Detail Page Enhancements */
+.financial-table .ant-table-thead > tr > th {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-bottom: 2px solid #e2e8f0;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+}
+
+.financial-table .ant-table-tbody > tr > td {
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.financial-table .ant-table-tbody > tr:hover > td {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Enhanced card hover effects */
+.ant-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Progress bar enhancements */
+.ant-progress-bg {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for tables */
+.ant-table-body::-webkit-scrollbar {
+  height: 8px;
+}
+
+.ant-table-body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.ant-table-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Badge enhancements */
+.ant-badge-count {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Tag enhancements */
+.ant-tag {
+  border-radius: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border: none;
+}
+
+/* Enhanced Key Details and Subscription Cards */
+.key-details-card, .subscription-card {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.subscription-card {
+  transform: translateY(0);
+}
+
+.key-details-card::before, .subscription-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.key-details-card:hover::before, .subscription-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Custom progress bar animations */
+.custom-progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Subscription card title styling */
+.ant-card-head-title {
+  padding: 0 !important;
+}
+
+/* Enhanced subscription status badge */
+.subscription-status-badge {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Progress bar glow effect */
+.subscription-card .rounded-full > div {
+  position: relative;
+}
+
+.subscription-card .rounded-full > div::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  border-radius: inherit;
+  filter: blur(4px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Icon hover effects */
+.icon-container {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.icon-container:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced hero section styling */
+.hero-section-perfect {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.hero-logo {
+  transition: transform 0.3s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.05);
+}
+
+.hero-tags .ant-tag {
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border: none;
+  backdrop-filter: blur(10px);
+}
+
+.hero-price-section {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .hero-price-section {
+    text-align: center;
+  }
+}
+
+/* Compact layout improvements */
+.hero-section {
+  padding: 1.5rem 0 !important;
+}
+
+.hero-content {
+  gap: 1.25rem !important;
+}
+
+.action-buttons-section {
+  padding: 0.75rem 0 !important;
+}
+
+/* Enhanced IPO logo styling */
+.ipo-logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.ipo-logo-container::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3), rgba(59, 130, 246, 0.3));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ipo-logo-container:hover::before {
+  opacity: 1;
+}
+
+/* Responsive improvements for mobile */
+@media (max-width: 768px) {
+  .key-details-card, .subscription-card {
+    margin-bottom: 16px;
+  }
+
+  .key-details-card .text-lg {
+    font-size: 1rem;
+  }
+
+  .subscription-card .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .hero-section {
+    padding: 1rem 0 !important;
+  }
+
+  .ipo-logo-container img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+
+/* Card spacing optimization */
+.ant-card {
+  margin-bottom: 1.5rem;
+}
+
+.ant-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Reduce excessive padding in sections */
+.section-content {
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-content {
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* Ensure consistent card heights */
+.ant-row .ant-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-row .ant-col .ant-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-row .ant-col .ant-card .ant-card-body {
+  flex: 1;
+}
+
+/* Enhanced layout alignment */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px 0;
+}
+
+/* Improved sidebar alignment */
+.sidebar-sticky {
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+}
+
+@media (max-width: 992px) {
+  .sidebar-sticky {
+    position: static;
+  }
+}
+
+/* IPO Action Buttons */
+.ipo-action-button {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+
+.ipo-action-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.ipo-action-button:active {
+  transform: translateY(0);
+}
+
+/* IPO Date Items */
+.ipo-date-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.ipo-date-item:hover {
+  transform: translateX(4px);
+}
+
+/* Enhanced table styling for IPO details */
+.ipo-detail-card table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ipo-detail-card table thead tr {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.ipo-detail-card table thead th {
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.ipo-detail-card table tbody tr:hover {
+  background-color: #f9fafb;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+.ipo-detail-card table tbody td {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Breadcrumb enhancements */
+.ant-breadcrumb {
+  font-weight: 500;
+}
+
+.ant-breadcrumb ol {
+  display: flex;
+  align-items: center;
+}
+.ant-breadcrumb-link {
+  transition: all 0.2s ease;
+}
+
+.ant-breadcrumb-link:hover {
+  color: #1890ff !important;
+}
+
+/* Badge enhancements */
+.ant-badge-count {
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Progress bar enhancements */
+.ant-progress-bg {
+  border-radius: 6px !important;
+}
+
+.ant-progress-inner {
+  border-radius: 6px !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Responsive improvements for mobile */
+@media (max-width: 576px) {
+  .ipo-date-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  .ipo-date-item .flex {
+    margin-bottom: 4px;
+  }
+
+  .ipo-action-button {
+    height: 48px !important;
+    font-size: 14px;
+  }
+}
+
+/* Button text improvements */
+.ipo-apply-upcoming {
+  position: relative;
+}
+
+.ipo-apply-upcoming::before {
+  content: "🕒";
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.ipo-apply-listed::before {
+  content: "📈";
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.ipo-apply-closed::before {
+  content: "📊";
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.ipo-apply-active::before {
+  content: "🚀";
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+/* Tooltip-like effect for disabled upcoming button */
+.ipo-apply-upcoming {
+  position: relative;
+}
+
+.ipo-apply-upcoming:hover::after {
+  content: "IPO opens soon";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 4px;
+}
+
+.ipo-apply-upcoming:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+/* Dark mode support (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1f1f1f;
+    --text-color: #ffffff;
+    --card-bg: #2f2f2f;
+  }
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Mobile floating button utility classes */
+.mobile-floating-fix {
+  z-index: 10000 !important;
+  position: fixed !important;
+}
+
+.mobile-floating-button {
+  z-index: 10001 !important;
+  position: relative !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Ensure proper stacking context */
+.floating-container-fix {
+  isolation: isolate;
+  z-index: 10000;
+}
+
+/* Smooth scrolling for mobile */
+@media (max-width: 768px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Global floating button fixes for mobile */
+  .index-cls,
+  .floating-button-container {
+    z-index: 10000 !important;
+    position: fixed !important;
+  }
+
+  /* Ensure floating buttons are always above footer and other content */
+  .floating-action-btn,
+  .floating-action-button {
+    z-index: 10001 !important;
+    position: relative !important;
+  }
+
+  /* Prevent footer from interfering with floating buttons */
+  .ant-layout-footer {
+    z-index: 1 !important;
+  }
+}
