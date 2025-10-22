@@ -18,6 +18,8 @@ const { Title, Paragraph, Text } = Typography;
 const { Step } = Steps;
 
 const HelpCenterPage: React.FC = () => {
+  const lastUpdated = "October 1, 2025";
+
   const helpCategories = [
     {
       title: 'Getting Started',
@@ -154,6 +156,7 @@ const HelpCenterPage: React.FC = () => {
             Your comprehensive guide to IPO investing and using our platform effectively.
             Find tutorials, guides, and get support when you need it.
           </Paragraph>
+          <Text className="text-blue-200 text-lg">Last updated: {lastUpdated}</Text>
         </div>
       </div>
 

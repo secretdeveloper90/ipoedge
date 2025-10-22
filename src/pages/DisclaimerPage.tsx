@@ -14,7 +14,7 @@ import {
 const { Title, Paragraph, Text } = Typography;
 
 const DisclaimerPage: React.FC = () => {
-  const lastUpdated = "January 15, 2024";
+  const lastUpdated = "October 1, 2025";
 
   const riskFactors = [
     {

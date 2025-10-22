@@ -13,7 +13,7 @@ const { Title, Paragraph, Text } = Typography;
 const { Link } = Anchor;
 
 const TermsConditionsPage: React.FC = () => {
-  const lastUpdated = "January 15, 2024";
+  const lastUpdated = "October 1, 2025";
 
   const sections = [
     { key: 'acceptance', title: 'Acceptance of Terms' },
@@ -26,8 +26,7 @@ const TermsConditionsPage: React.FC = () => {
     { key: 'privacy', title: 'Privacy and Data Protection' },
     { key: 'termination', title: 'Termination of Service' },
     { key: 'governing-law', title: 'Governing Law and Jurisdiction' },
-    { key: 'modifications', title: 'Modifications to Terms' },
-    { key: 'contact', title: 'Contact Information' }
+    { key: 'modifications', title: 'Modifications to Terms' }
   ];
 
   return (
@@ -232,19 +231,7 @@ const TermsConditionsPage: React.FC = () => {
 
               <Divider />
 
-              {/* Contact Information */}
-              <div id="contact" className="mb-8">
-                <Title level={3} className="!mb-4">Contact Information</Title>
-                <Paragraph className="text-gray-700 leading-relaxed mb-4">
-                  If you have questions about these Terms and Conditions, please contact us:
-                </Paragraph>
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <Text strong>Email:</Text> ipoedge@gmail.com<br />
-                  <Text strong>Phone:</Text> +91 12345 67890<br />
-                  <Text strong>Address:</Text> 123 Business District, Mumbai, Maharashtra 400001<br />
-                  <Text strong>Legal Department:</Text> ipoedge@gmail.com
-                </div>
-              </div>
+
 
               {/* Last Updated */}
               <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">

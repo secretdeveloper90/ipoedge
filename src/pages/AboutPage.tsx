@@ -14,6 +14,8 @@ import {
 const { Title, Paragraph, Text } = Typography;
 
 const AboutPage: React.FC = () => {
+  const lastUpdated = "October 1, 2025";
+
   const stats = [
     { title: 'IPOs Tracked', value: '100+', icon: <RocketOutlined /> },
     { title: 'Active Users', value: '2K+', icon: <TeamOutlined /> },
@@ -116,9 +118,10 @@ const AboutPage: React.FC = () => {
             About IPO Edge
           </Title>
           <Paragraph className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-            Empowering investors with comprehensive IPO insights, real-time data, and intelligent analysis 
+            Empowering investors with comprehensive IPO insights, real-time data, and intelligent analysis
             to make informed investment decisions in the Indian stock market.
           </Paragraph>
+          <Text className="text-blue-200 text-lg">Last updated: {lastUpdated}</Text>
         </div>
       </div>
 

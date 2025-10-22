@@ -18,6 +18,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const ContactPage: React.FC = () => {
+  const lastUpdated = "October 1, 2025";
   const [form] = Form.useForm();
 
   const contactInfo = [
@@ -89,9 +90,10 @@ const ContactPage: React.FC = () => {
             Contact Us
           </Title>
           <Paragraph className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-            Have questions about IPOs or need help with our platform? 
+            Have questions about IPOs or need help with our platform?
             We're here to assist you every step of the way.
           </Paragraph>
+          <Text className="text-blue-200 text-lg">Last updated: {lastUpdated}</Text>
         </div>
       </div>
 

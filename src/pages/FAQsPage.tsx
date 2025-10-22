@@ -11,11 +11,13 @@ import {
   TrophyOutlined
 } from '@ant-design/icons';
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 const { Panel } = Collapse;
 const { Search } = Input;
 
 const FAQsPage: React.FC = () => {
+  const lastUpdated = "October 1, 2025";
+
   const faqCategories = [
     {
       title: 'General IPO Questions',
@@ -150,7 +152,8 @@ const FAQsPage: React.FC = () => {
           <Paragraph className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed !mb-8">
             Find answers to common questions about IPOs, our platform, and investment processes.
           </Paragraph>
-          
+          <Text className="text-blue-200 text-lg">Last updated: {lastUpdated}</Text>
+
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
             <Search
