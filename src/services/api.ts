@@ -2,6 +2,7 @@ import type { IPO, Buyback, Broker, APIResponse, IPOFilters } from '../types';
 import { mockIPOs } from '../data/mockIPOs';
 import { mockBuybacks } from '../data/mockBuybacks';
 import { mockBrokers } from '../data/mockBrokers';
+import { firebaseIPOService } from './firebaseIPOService';
 
 // Simulate API delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -101,43 +102,70 @@ export const ipoAPI = {
     sortBy?: string;
     sortOrder?: 'asc' | 'desc';
   }): Promise<APIResponse<IPO[]>> {
-    await delay(500); // Simulate network delay
-
     try {
-      let filteredIPOs = [...mockIPOs];
+      // Try to fetch from Firebase first
+      try {
+        const { ipos, total } = await firebaseIPOService.getIPOs({
+          filters: params?.filters,
+          search: params?.search,
+          sortBy: params?.sortBy,
+          sortOrder: params?.sortOrder,
+          page: params?.page,
+          limit: params?.limit,
+        });
 
-      // Apply search
-      if (params?.search) {
-        filteredIPOs = searchIPOs(filteredIPOs, params.search);
-      }
+        const page = params?.page || 1;
+        const limit = params?.limit || 12;
 
-      // Apply filters
-      if (params?.filters) {
-        filteredIPOs = filterIPOs(filteredIPOs, params.filters);
-      }
+        return {
+          data: ipos,
+          success: true,
+          pagination: {
+            page,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit)
+          }
+        };
+      } catch (firebaseError) {
+        console.warn('Firebase fetch failed, falling back to mock data:', firebaseError);
 
-      // Apply sorting
-      if (params?.sortBy) {
-        filteredIPOs = sortIPOs(filteredIPOs, params.sortBy, params?.sortOrder || 'asc');
-      }
+        // Fallback to mock data
+        let filteredIPOs = [...mockIPOs];
 
-      // Apply pagination
-      const page = params?.page || 1;
-      const limit = params?.limit || 12;
-      const startIndex = (page - 1) * limit;
-      const endIndex = startIndex + limit;
-      const paginatedIPOs = filteredIPOs.slice(startIndex, endIndex);
-
-      return {
-        data: paginatedIPOs,
-        success: true,
-        pagination: {
-          page,
-          limit,
-          total: filteredIPOs.length,
-          totalPages: Math.ceil(filteredIPOs.length / limit)
+        // Apply search
+        if (params?.search) {
+          filteredIPOs = searchIPOs(filteredIPOs, params.search);
         }
-      };
+
+        // Apply filters
+        if (params?.filters) {
+          filteredIPOs = filterIPOs(filteredIPOs, params.filters);
+        }
+
+        // Apply sorting
+        if (params?.sortBy) {
+          filteredIPOs = sortIPOs(filteredIPOs, params.sortBy, params?.sortOrder || 'asc');
+        }
+
+        // Apply pagination
+        const page = params?.page || 1;
+        const limit = params?.limit || 12;
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + limit;
+        const paginatedIPOs = filteredIPOs.slice(startIndex, endIndex);
+
+        return {
+          data: paginatedIPOs,
+          success: true,
+          pagination: {
+            page,
+            limit,
+            total: filteredIPOs.length,
+            totalPages: Math.ceil(filteredIPOs.length / limit)
+          }
+        };
+      }
     } catch {
       return {
         data: [],
@@ -149,15 +177,26 @@ export const ipoAPI = {
 
   // Get IPO by ID
   async getIPOById(id: string): Promise<APIResponse<IPO | null>> {
-    await delay(300);
-
     try {
-      const ipo = mockIPOs.find(ipo => ipo.id === id);
-      return {
-        data: ipo || null,
-        success: true,
-        message: ipo ? undefined : 'IPO not found'
-      };
+      // Try to fetch from Firebase first
+      try {
+        const ipo = await firebaseIPOService.getIPOById(id);
+        return {
+          data: ipo,
+          success: true,
+          message: ipo ? undefined : 'IPO not found'
+        };
+      } catch (firebaseError) {
+        console.warn('Firebase fetch failed, falling back to mock data:', firebaseError);
+
+        // Fallback to mock data
+        const ipo = mockIPOs.find(ipo => ipo.id === id);
+        return {
+          data: ipo || null,
+          success: true,
+          message: ipo ? undefined : 'IPO not found'
+        };
+      }
     } catch {
       return {
         data: null,
@@ -209,14 +248,24 @@ export const ipoAPI = {
 
   // Get IPOs by status
   async getIPOsByStatus(status: string): Promise<APIResponse<IPO[]>> {
-    await delay(400);
-
     try {
-      const filteredIPOs = mockIPOs.filter(ipo => ipo.status === status);
-      return {
-        data: filteredIPOs,
-        success: true
-      };
+      // Try to fetch from Firebase first
+      try {
+        const ipos = await firebaseIPOService.getIPOsByStatus(status);
+        return {
+          data: ipos,
+          success: true
+        };
+      } catch (firebaseError) {
+        console.warn('Firebase fetch failed, falling back to mock data:', firebaseError);
+
+        // Fallback to mock data
+        const filteredIPOs = mockIPOs.filter(ipo => ipo.status === status);
+        return {
+          data: filteredIPOs,
+          success: true
+        };
+      }
     } catch {
       return {
         data: [],
@@ -253,7 +302,7 @@ export const buybackAPI = {
 
     try {
       let filteredBuybacks = [...mockBuybacks];
-      
+
       if (status) {
         filteredBuybacks = filteredBuybacks.filter(buyback => buyback.status === status);
       }
